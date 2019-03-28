@@ -2,7 +2,7 @@
 # NIM / Nama    : 13517048 / Leonardo
 #                 13517054 / Vinsen Marselino Andreas
 # Nama File     : ADT.py
-# Deskripsi     : Tipe bentukan untuk Point, Matriks
+# Deskripsi     : Tipe bentukan untuk Point, Matriks, dan Node
 
 from colorama import Back, Style
 import numpy as np
@@ -54,23 +54,21 @@ class Matriks:
             print(Style.RESET_ALL)
 
 class Node:
-    def __init__(self, _pred = None, _position = Point()):
+    def __init__(self, _pred = None, _pos = Point()):
         self.pred = _pred
-        self.position = _position
+        self.pos = _pos
 
         self.toN = 0
         self.fromN = 0
 
     def isEqual(self, node2):
-        return ((self.position.x == node2.position.x) and
-                (self.position.y == node2.position.y))
+        return ((self.pos.x == node2.pos.x) and
+                (self.pos.y == node2.pos.y))
 
     def ExistIn(self, listOfNode):
         for v in listOfNode:
             if (self.isEqual(v)):
                 return True
-            else:
-                continue
         #sampai bagian ini jika self tidak exist di listOfNode
         return False
 
@@ -78,8 +76,6 @@ class Node:
         for v in listOfNode:
             if (self.isEqual(v)):
                 return v.pred
-            else:
-                continue
         #sampai bagian ini jika self tidak exist di listOfNode
         return False
 

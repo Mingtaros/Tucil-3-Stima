@@ -12,37 +12,37 @@ def BFS(maze, start, end):
         curr_node = Node(None, start)
 
         queue.append(curr_node)
-        while (queue != [] and curr_node.position != end): 
+        while (queue != [] and curr_node.pos != end): 
             curr_node = queue.pop(0)
             prev_node = curr_node
             if(not(curr_node.ExistIn(visited))):
                 visited.append(curr_node)
-                if(curr_node.position.x+1 < maze.N):
-                    if (maze.data[curr_node.position.x+1][curr_node.position.y] == 0):
-                        next_pos = Point(curr_node.position.x+1,curr_node.position.y)
+                if(curr_node.pos.x+1 < maze.N):
+                    if (maze.data[curr_node.pos.x+1][curr_node.pos.y] == 0):
+                        next_pos = Point(curr_node.pos.x+1,curr_node.pos.y)
                         next_node = Node(prev_node, next_pos)
                         queue.append(next_node)
-                if(curr_node.position.x-1 >= 0):
-                    if (maze.data[curr_node.position.x-1][curr_node.position.y] == 0):
-                        next_pos = Point(curr_node.position.x-1,curr_node.position.y)
+                if(curr_node.pos.x-1 >= 0):
+                    if (maze.data[curr_node.pos.x-1][curr_node.pos.y] == 0):
+                        next_pos = Point(curr_node.pos.x-1,curr_node.pos.y)
                         next_node = Node(prev_node, next_pos)
                         queue.append(next_node)
-                if(curr_node.position.y+1 < maze.M):
-                    if (maze.data[curr_node.position.x][curr_node.position.y+1] == 0):
-                        next_pos = Point(curr_node.position.x,curr_node.position.y+1)
+                if(curr_node.pos.y+1 < maze.M):
+                    if (maze.data[curr_node.pos.x][curr_node.pos.y+1] == 0):
+                        next_pos = Point(curr_node.pos.x,curr_node.pos.y+1)
                         next_node = Node(prev_node, next_pos)
                         queue.append(next_node)
-                if(curr_node.position.y-1 >= 0):
-                    if (maze.data[curr_node.position.x][curr_node.position.y-1] == 0):
-                        next_pos = Point(curr_node.position.x,curr_node.position.y-1)
+                if(curr_node.pos.y-1 >= 0):
+                    if (maze.data[curr_node.pos.x][curr_node.pos.y-1] == 0):
+                        next_pos = Point(curr_node.pos.x,curr_node.pos.y-1)
                         next_node = Node(prev_node, next_pos)
                         queue.append(next_node)
-        if (curr_node.position == end):
+        if (curr_node.pos == end):
             path = [end]
             start_node = Node(None,end)
-            while(start_node.position != start):
+            while(start_node.pos != start):
                 path_node = start_node.search(visited)
-                path.append(path_node.position)
+                path.append(path_node.pos)
                 start_node = path_node
             path.append(start)
             return path[::-1]

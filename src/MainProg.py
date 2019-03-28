@@ -27,7 +27,7 @@ if __name__ == '__main__':
         try:
             path = Astar(matAStar, start_point, end_point)
             for ea in path:
-                matAStar.AddData(ea.getX(), ea.getY(), 2)
+                matAStar.AddData(ea.getX(), ea.getY(), 2) #berikan nilai 2 agar path diwarnai hijau
             matAStar.Print()
         except (TypeError):
             print("Path tidak ditemukan!")
@@ -36,10 +36,9 @@ if __name__ == '__main__':
         try:
             path = BFS(matBFS, start_point, end_point)
             for ea in path:
-                matBFS.AddData(ea.getX(), ea.getY(), 2)
+                matBFS.AddData(ea.getX(), ea.getY(), 2) #berikan nilai 2 agar path diwarnai hijau
             matBFS.Print()
         except (TypeError):
             print("Path tidak ditemukan!")
     except (FileNotFoundError):
         print("File tidak ditemukan")
-    
